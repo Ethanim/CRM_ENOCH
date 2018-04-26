@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.encrm.entity">
+	
+	<!-- 查询所有菜单信息 -->
+	<select id="queryAllMenu" parameterType="java.util.Map" resultType="com.encrm.system.entity.Menu">
+		<if test="isparid != null and isparid != ''">
+		select 
+			m.menuid,m.menuname,m.menuurl,m.menucode,m.menuno,m.menuparaid
+		from en_menu m
+		where m.menuparaid is null
+		</if>
+		<if test="isparid == null">
+		select 
+			m.menuid,m.menuname,m.menuurl,m.menucode,m.menuno,m.menuparaid,m2.menuname menuParaname
+		from en_menu m
+		join en_menu m2 on m2.menuid=m.menuparaid
+		where m.menuparaid = #{menuparaid}
+		</if>
+	</select>
+	
+	<!-- 根据角色 id 删除 角色菜单信息-->
+	<delete id="deleteRoleMenu" parameterType="java.util.Map">
+		delete from en_role_menu 
+		where roleid = #{roleid}
+	</delete>
+	
+	<!-- 根据菜单主键 id，判断当前菜单是否有下一级菜单 -->
+	<select id="isHasChildrenMenu" parameterType="java.util.Map" resultType="com.encrm.system.entity.Menu">
+		select 
+			m.menuid,m.menuname 
+		from en_menu m
+		where m.menuparaid = #{id}
+	</select>
+	
+	<!-- 根据菜单主键 id，判断当前菜单是否分配权限 -->
+	<select id="isHasRoleMenu" parameterType="java.util.Map" resultType="com.encrm.system.entity.Menu">
+		select 
+			rm.id
+		from en_role_menu rm
+		where rm.menuid = #{id}
+	</select>
+	
+	<!-- 根据菜单 id，查询菜单信息 -->
+	<select id="queryMenuById" parameterType="java.util.Map" resultType="com.encrm.system.entity.Menu">
+		select 
+			m.menuid,m.menuname 
+		from en_menu m 
+		where m.menuid = #{id}
+	</select>
+
+</mapper> 

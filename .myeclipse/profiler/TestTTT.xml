@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="profiler.settings.instrument.empty.methods">true</entry>
+<entry key="ProfilerCPUSettings_profile_runnables">true</entry>
+<entry key="profiler.settings.n.profiled.threads.limit">32</entry>
+<entry key="ProfilerCPUSettings_filter_type">2</entry>
+<entry key="profiler.settings.obj.alloc.stack.sampling.depth">-1</entry>
+<entry key="profiler.settings.instrument.method.invoke">true</entry>
+<entry key="profiler.settings.instr.scheme">1</entry>
+<entry key="ProfilerMemorySettings_track_every">10</entry>
+<entry key="ProfilerMemorySettings_mode">4</entry>
+<entry key="ProfilerCPUSettings_root_classes">com.encrm.patter.entity.**
+com.encrm.publics.annotation.**
+com.encrm.publics.constants.**
+com.encrm.publics.controller.**
+com.encrm.publics.dao.**
+com.encrm.publics.email.**
+com.encrm.publics.exception.**
+com.encrm.publics.interceptorfiles.**
+com.encrm.publics.jpush.pool.**
+com.encrm.publics.task.**
+com.encrm.publics.util.**
+com.encrm.publics.websocket.controller.**
+com.encrm.publics.websocket.entity.**
+com.encrm.resource.entity.**
+com.encrm.system.controller.**
+com.encrm.system.entity.**
+com.encrm.system.service.**
+test.**
+</entry>
+<entry key="ProfilerCPUSettings_filter_value">com.encrm.patter.entity.*,&#13;
+com.encrm.publics.annotation.*,&#13;
+com.encrm.publics.constants.*,&#13;
+com.encrm.publics.controller.*,&#13;
+com.encrm.publics.dao.*,&#13;
+com.encrm.publics.email.*,&#13;
+com.encrm.publics.exception.*,&#13;
+com.encrm.publics.interceptorfiles.*,&#13;
+com.encrm.publics.jpush.pool.*,&#13;
+com.encrm.publics.task.*,&#13;
+com.encrm.publics.util.*,&#13;
+com.encrm.publics.websocket.controller.*,&#13;
+com.encrm.publics.websocket.entity.*,&#13;
+com.encrm.resource.entity.*,&#13;
+com.encrm.system.controller.*,&#13;
+com.encrm.system.entity.*,&#13;
+com.encrm.system.service.*,&#13;
+test.*</entry>
+<entry key="profiler.settings.istrument.getter.setter.methods">true</entry>
+<entry key="myeclipse.profiling.mode">0</entry>
+<entry key="ProfilerMemorySettings_stacktraces">-1</entry>
+<entry key="profiler.settings.sampling.interval">10</entry>
+<entry key="profiler.settings.cpu.profiling.type">0</entry>
+</properties>

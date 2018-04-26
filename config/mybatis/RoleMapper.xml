@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.encrm.entity">
+	
+	<!-- 查询所有角色信息 -->
+	<select id="queryAllRole" parameterType="java.util.Map" resultType="com.encrm.system.entity.Role">
+		select 
+			r.roleid,r.rolename,d.deptid,d.deptname,group_concat(m.menuname SEPARATOR ',') menuname
+		from en_role r 
+		left join en_dept d on r.deptid=d.deptid
+		left join en_role_menu rm on rm.roleid=r.roleid
+		left join en_menu m on m.menuid=rm.menuid
+		group by r.rolename
+		order by r.roleid
+	</select>
+	
+	<!-- 查询当前角色已经分配过的菜单信息列表 -->
+	<select id="queryAlreadySelectedMenu" parameterType="java.util.Map" resultType="com.encrm.system.entity.Menu">
+		select 
+			rm.roleid,rm.menuid
+		from en_role_menu rm
+		where rm.roleid = #{roleid}
+	</select>
+	
+</mapper> 

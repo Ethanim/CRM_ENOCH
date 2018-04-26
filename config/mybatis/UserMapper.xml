@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.encrm.entity">
+
+	<!-- 查询用户是否存在 -->
+	<select id="queryUserByEmail" parameterType="java.util.Map" resultType="com.encrm.system.entity.User">
+		 select 
+			u.userid,u.username,u.email,u.deptid,u.roleid,u.ischange
+		from en_user u
+		where u.email = #{email} limit 1
+	</select>
+	
+	<!-- 查询用户密码是否匹配 -->
+	<select id="isExisPassword" parameterType="java.util.Map" resultType="com.encrm.system.entity.User">
+		 select 
+			u.userid,u.username,u.email,u.deptid,u.roleid
+		from en_user u
+		where u.userid = #{userid} and u.password = #{password}
+	</select>
+	
+	<!-- 根据用户角色 ID,查询菜单信息 -->
+	<select id="getMenusByRoleId" parameterType="java.util.Map" resultType="com.encrm.system.entity.Menu">
+		select 
+			u.userid,u.username,m.menuid,m.menuname,m.menuurl
+		from en_user u 
+		join en_role_menu rm on u.roleid=rm.roleid
+		join en_menu m on rm.menuid=m.menuid
+		<if test="isparid != null and isparid != ''">
+			where u.roleid = #{roleId} and m.menuparaid is null
+		</if>
+		<if test="isparid == null">
+			where u.roleid = #{roleId} and m.menuparaid = #{menuparaid}
+		</if>
+	</select>
+	
+	<!-- 查询用户信息列表 -->
+	<select id="queryAllUser" parameterType="java.util.Map" resultType="com.encrm.system.entity.User">
+		select 
+			u.userid,u.username,u.email,u.deptid,u.roleid,u.ischange,
+			u.create_time,u.password,u.phone,u.mobile,u.deptgroup,u.note,
+			u.userphoto,r.rolename,d.deptname
+		from en_user u
+		join en_role r on r.roleid=u.roleid
+		join en_dept d on d.deptid=u.deptid 
+	</select>
+	
+	<!-- 根据用户 ID,批量删除 -->
+	<delete id="deleteByUserIds" parameterType="java.util.ArrayList" >
+		delete u from en_user u where u.userid in
+		<foreach collection="array" index="index" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	 
+</mapper> 

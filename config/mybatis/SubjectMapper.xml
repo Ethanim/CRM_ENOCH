@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.encrm.entity">
+	
+	<!-- 查询所有课程信息 -->
+	<select id="queryAllSubject" parameterType="java.util.Map" resultType="com.encrm.system.entity.Subject">
+		select
+			s.subjectid,s.subjectname,s.subjectcode,s.note,c.coursename
+		from en_subject s
+		left join en_course c on s.courseid=c.courseid
+
+	</select>
+	
+</mapper> 

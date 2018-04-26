@@ -1,0 +1,13 @@
+/applicationContext-ehcache.xml
+/applicationContext-quartz.xml
+/applicationContext.xml
+/com
+/commonsqlmappings
+/config.properties
+/context-dispatcher.xml
+/ehcache.xml
+/jdbc.properties
+/log4j.xml
+/mybatis
+/mybatis-config.xml
+/test

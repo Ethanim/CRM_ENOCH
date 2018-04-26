@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+validator.Checked=WebRoot/sales,WebRoot/report,WebRoot/custom,WebRoot/patter,WebRoot/finance,WebRoot/system,WebRoot/common,WebRoot/executive,WebRoot/ueditor,WebRoot/operate
+validator.Unchecked=
