@@ -47,6 +47,11 @@ public class UserLoginController {
 		return JumpViewConstants.SYSTEM_LOGIN;
 	}
 	
+	/**
+	 * 显示左侧菜单
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/main.do", method=RequestMethod.GET)
 	public String main(Model model){
 		if(UserContext.getLoginUser() != null){
@@ -57,6 +62,16 @@ public class UserLoginController {
 		return JumpViewConstants.SYSTEM_LOGIN;
 	}
 	
+	/**
+	 * 用户登录
+	 * @param request
+	 * @param response
+	 * @param email
+	 * @param password
+	 * @param sign
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
 	public String login(HttpServletRequest request,HttpServletResponse response, String email, String password, String sign, Model model){
 		
@@ -99,6 +114,12 @@ public class UserLoginController {
 		return ReturnConstants.PARAM_NULL;
 	}
 	
+	/**
+	 * 用户退出
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping(value="logout.do",method=RequestMethod.GET)
 	public String logout(HttpServletRequest request, HttpServletResponse response){
 		// 清除 session

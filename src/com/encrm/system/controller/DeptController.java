@@ -63,6 +63,12 @@ public class DeptController extends BaseController{
 		return JumpViewConstants.SYSTEM_LOGIN;
 	}
 	
+	/**
+	 * 添加/修改部门
+	 * @param request
+	 * @param dept
+	 * @return
+	 */
 	@RequestMapping(value="/dept/saveOrUpdate.do", method=RequestMethod.POST)
 	public @ResponseBody String saveOrUpdateDept(HttpServletRequest request, Dept dept){
 		if(dept != null){
@@ -72,6 +78,12 @@ public class DeptController extends BaseController{
 		return ReturnConstants.PARAM_NULL;
 	}
 	
+	/**
+	 * 根据 ids 批量删除部门
+	 * @param request
+	 * @param ids
+	 * @return
+	 */
 	@RequestMapping(value="/dept/delete.do", method=RequestMethod.POST)
 	public @ResponseBody String deleteDeptById(HttpServletRequest request, String ids){
 		if(StringUtils.isNotBlank(ids)){

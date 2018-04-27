@@ -33,9 +33,9 @@
 			<li class="red" onclick="show()">
 				<a href="javascript:;" class="create"><span class="glyphicon glyphicon-minus"></span>删除</a>
 			</li>
-			<li class="green" onclick="wuorder.ShowDiv('filter','fade')">
+			<!-- <li class="green" onclick="wuorder.ShowDiv('filter','fade')">
 				<a href="javascript:;" class="create"><span class="glyphicon glyphicon-zoom-in"></span>筛选</a>
-			</li>										
+			</li>		 -->								
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
 					<input type="text" name="mobile" class="form-control check_tiaoj" placeholder="输入用户名/手机搜索" ng-model="query">

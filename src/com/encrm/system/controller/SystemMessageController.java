@@ -24,6 +24,11 @@ public class SystemMessageController extends BaseController{
 	@Autowired
 	private ISystemMessageService systemMessageService;
 	
+	/**
+	 * 跳转系统消息界面
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/system/systemMessage.do", method=RequestMethod.GET)
 	public String systemMessageManager(Model model){
 		if(UserContext.getLoginUser() != null){
@@ -60,6 +65,12 @@ public class SystemMessageController extends BaseController{
 		return ReturnConstants.PARAM_NULL;
 	}
 	
+	/**
+	 * 消息发布与撤回
+	 * @param request
+	 * @param systemmessage
+	 * @return
+	 */
 	@RequestMapping(value="/system/sendMessage.do", method=RequestMethod.GET)
 	public @ResponseBody String sendMessage(HttpServletRequest request, Systemmessage systemmessage){
 		if(systemmessage != null){

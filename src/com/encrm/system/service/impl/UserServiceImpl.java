@@ -84,10 +84,15 @@ public class UserServiceImpl implements IUserService{
 			if(user.getUserid() != null){//修改
 				user.setUpdate_id(UserContext.getLoginUser().getUserid());
 				user.setUpdate_time(new Timestamp(System.currentTimeMillis()));
+				//为密码加密
+				if(user.getPassword() != null)
+					user.setPassword(MD5Tools.encode(user.getPassword()));
 				userDao.update(user);
 			}else{//增加
 				user.setCreate_id(UserContext.getLoginUser().getUserid());
 				user.setCreate_time(new Timestamp(System.currentTimeMillis()));
+				//为用户设置加密过后的初始密码，默认 123123
+				user.setPassword(MD5Tools.encode("123123"));
 				userDao.insert(user);
 			}
 		}
