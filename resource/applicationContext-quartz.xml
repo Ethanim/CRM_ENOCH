@@ -5,15 +5,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
         
-        <!-- 定时  -->
-        <bean id="nextVisitMessageJob" class="com.encrm.publics.task.TaskTest1"></bean>
+        <!-- 定时执行的类  -->
+        <bean id="nextVisitMessageJob" class="com.encrm.publics.task.RunningTimeTask"></bean>
         
         <bean id="nextVisitMessageTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
             <property name="targetObject">
                 <ref bean="nextVisitMessageJob"/>
             </property>
             <property name="targetMethod">
-                <value>test1</value>
+            	<!-- 定时执行的类中要运行的方法 -->
+                <value>runningTime</value>
             </property>
         </bean>
         <bean id="nextVisitMessageJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
@@ -21,7 +22,8 @@
                 <ref bean="nextVisitMessageTask"/>
             </property>
             <property name="cronExpression">
-                <value>0/1 * * * * ?</value>
+            	<!-- cron 表达式，每 10 秒运行一次 -->
+                <value>0/10 * * * * ?</value>
             </property>
         </bean>
         
@@ -29,8 +31,7 @@
         <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
             <property name="triggers">
                 <list>
-                   <!--  <ref bean="nextVisitMessageJobTrigger"/> -->
-                    <!--  <ref bean="nextVisitMessageJobTrigger1"/>  -->
+                   <ref bean="nextVisitMessageJobTrigger"/>
                 </list>
             </property>
         </bean>
