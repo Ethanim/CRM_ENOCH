@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.encrm.publics.dao.IDataAccess;
 import com.encrm.publics.util.PageBean;
@@ -13,6 +14,7 @@ import com.encrm.system.entity.Systemmessage;
 import com.encrm.system.service.ISystemMessageService;
 
 @Service
+@Transactional(rollbackFor=Exception.class)
 public class SystemMessageServiceImpl implements ISystemMessageService{
 	
 	@Autowired

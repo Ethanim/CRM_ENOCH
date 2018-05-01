@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import sun.swing.StringUIClientPropertyKey;
 
@@ -16,6 +17,7 @@ import com.encrm.system.entity.Course;
 import com.encrm.system.service.ICourseService;
 
 @Service
+@Transactional(rollbackFor=Exception.class)
 public class CourseServiceImp implements ICourseService{
 	
 	@Autowired

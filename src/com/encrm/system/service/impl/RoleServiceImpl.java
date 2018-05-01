@@ -7,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.encrm.publics.constants.ReturnConstants;
 import com.encrm.publics.dao.IDataAccess;
@@ -16,6 +17,7 @@ import com.encrm.system.entity.Role;
 import com.encrm.system.service.IRoleService;
 
 @Service
+@Transactional(rollbackFor=Exception.class)
 public class RoleServiceImpl implements IRoleService{
 	
 	@Autowired

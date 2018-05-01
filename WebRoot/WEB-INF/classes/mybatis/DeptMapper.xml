@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.encrm.entity">
+	
+	<!-- 查询所有部门信息 -->
+	<select id="queryAllDepts" parameterType="java.util.Map" resultType="com.encrm.system.entity.Dept">
+		select
+			d.deptid,d.deptparaid,d.deptname,d.deptcode,de.deptname deptParaname
+				from en_dept d
+		left join en_dept de on d.deptparaid=de.deptid
+	</select>
+	
+	<!-- 根据部门 ID, 查询当前部门下对应的角色信息 -->
+	<select id="queryRolesByDeptId" parameterType="java.util.Map" resultType="com.encrm.system.entity.Role">
+		select
+			r.roleid,r.rolename,r.deptid
+		from en_role r
+		where deptid = #{deptid}
+	</select>
+	
+</mapper> 
